@@ -13,14 +13,16 @@
 		E94EE51E18021C9C003A77E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E94EE51C18021C9C003A77E7 /* InfoPlist.strings */; };
 		E94EE52018021C9C003A77E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E94EE51F18021C9C003A77E7 /* main.m */; };
 		E94EE52418021C9C003A77E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E94EE52318021C9C003A77E7 /* AppDelegate.m */; };
-		E94EE52718021C9C003A77E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E94EE52518021C9C003A77E7 /* Main.storyboard */; };
-		E94EE52A18021C9C003A77E7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E94EE52918021C9C003A77E7 /* ViewController.m */; };
+		E94EE52A18021C9C003A77E7 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E94EE52918021C9C003A77E7 /* MainViewController.m */; };
 		E94EE52C18021C9C003A77E7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E94EE52B18021C9C003A77E7 /* Images.xcassets */; };
 		E94EE53318021C9C003A77E7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94EE53218021C9C003A77E7 /* XCTest.framework */; };
 		E94EE53418021C9C003A77E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94EE51318021C9C003A77E7 /* Foundation.framework */; };
 		E94EE53518021C9C003A77E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94EE51718021C9C003A77E7 /* UIKit.framework */; };
 		E94EE53D18021C9C003A77E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E94EE53B18021C9C003A77E7 /* InfoPlist.strings */; };
 		E94EE53F18021C9C003A77E7 /* CJHCircularProgressViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E94EE53E18021C9C003A77E7 /* CJHCircularProgressViewTests.m */; };
+		E94EE54A18021DF1003A77E7 /* CJHCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E94EE54918021DF1003A77E7 /* CJHCircularProgressView.m */; };
+		E94EE54B18021DF1003A77E7 /* CJHCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E94EE54918021DF1003A77E7 /* CJHCircularProgressView.m */; };
+		E94EE54D18021E08003A77E7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94EE54C18021E08003A77E7 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,15 +46,17 @@
 		E94EE52118021C9C003A77E7 /* CJHCircularProgressView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CJHCircularProgressView-Prefix.pch"; sourceTree = "<group>"; };
 		E94EE52218021C9C003A77E7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E94EE52318021C9C003A77E7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E94EE52618021C9C003A77E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E94EE52818021C9C003A77E7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E94EE52918021C9C003A77E7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E94EE52818021C9C003A77E7 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		E94EE52918021C9C003A77E7 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		E94EE52B18021C9C003A77E7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E94EE53118021C9C003A77E7 /* CJHCircularProgressViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CJHCircularProgressViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94EE53218021C9C003A77E7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		E94EE53A18021C9C003A77E7 /* CJHCircularProgressViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CJHCircularProgressViewTests-Info.plist"; sourceTree = "<group>"; };
 		E94EE53C18021C9C003A77E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E94EE53E18021C9C003A77E7 /* CJHCircularProgressViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CJHCircularProgressViewTests.m; sourceTree = "<group>"; };
+		E94EE54818021DF1003A77E7 /* CJHCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJHCircularProgressView.h; sourceTree = "<group>"; };
+		E94EE54918021DF1003A77E7 /* CJHCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJHCircularProgressView.m; sourceTree = "<group>"; };
+		E94EE54C18021E08003A77E7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E94EE54D18021E08003A77E7 /* QuartzCore.framework in Frameworks */,
 				E94EE51618021C9C003A77E7 /* CoreGraphics.framework in Frameworks */,
 				E94EE51818021C9C003A77E7 /* UIKit.framework in Frameworks */,
 				E94EE51418021C9C003A77E7 /* Foundation.framework in Frameworks */,
@@ -101,6 +106,7 @@
 		E94EE51218021C9C003A77E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E94EE54C18021E08003A77E7 /* QuartzCore.framework */,
 				E94EE51318021C9C003A77E7 /* Foundation.framework */,
 				E94EE51518021C9C003A77E7 /* CoreGraphics.framework */,
 				E94EE51718021C9C003A77E7 /* UIKit.framework */,
@@ -114,11 +120,12 @@
 			children = (
 				E94EE52218021C9C003A77E7 /* AppDelegate.h */,
 				E94EE52318021C9C003A77E7 /* AppDelegate.m */,
-				E94EE52518021C9C003A77E7 /* Main.storyboard */,
-				E94EE52818021C9C003A77E7 /* ViewController.h */,
-				E94EE52918021C9C003A77E7 /* ViewController.m */,
+				E94EE52818021C9C003A77E7 /* MainViewController.h */,
+				E94EE52918021C9C003A77E7 /* MainViewController.m */,
 				E94EE52B18021C9C003A77E7 /* Images.xcassets */,
 				E94EE51A18021C9C003A77E7 /* Supporting Files */,
+				E94EE54818021DF1003A77E7 /* CJHCircularProgressView.h */,
+				E94EE54918021DF1003A77E7 /* CJHCircularProgressView.m */,
 			);
 			path = CJHCircularProgressView;
 			sourceTree = "<group>";
@@ -230,7 +237,6 @@
 			files = (
 				E94EE52C18021C9C003A77E7 /* Images.xcassets in Resources */,
 				E94EE51E18021C9C003A77E7 /* InfoPlist.strings in Resources */,
-				E94EE52718021C9C003A77E7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,8 +255,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E94EE52A18021C9C003A77E7 /* ViewController.m in Sources */,
+				E94EE52A18021C9C003A77E7 /* MainViewController.m in Sources */,
 				E94EE52418021C9C003A77E7 /* AppDelegate.m in Sources */,
+				E94EE54A18021DF1003A77E7 /* CJHCircularProgressView.m in Sources */,
 				E94EE52018021C9C003A77E7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E94EE54B18021DF1003A77E7 /* CJHCircularProgressView.m in Sources */,
 				E94EE53F18021C9C003A77E7 /* CJHCircularProgressViewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,14 +288,6 @@
 				E94EE51D18021C9C003A77E7 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		E94EE52518021C9C003A77E7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E94EE52618021C9C003A77E7 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		E94EE53B18021C9C003A77E7 /* InfoPlist.strings */ = {
@@ -380,6 +380,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CJHCircularProgressView/CJHCircularProgressView-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"__DEBUG__=1",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = "CJHCircularProgressView/CJHCircularProgressView-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -393,6 +397,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CJHCircularProgressView/CJHCircularProgressView-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "__RELEASE__=1";
 				INFOPLIST_FILE = "CJHCircularProgressView/CJHCircularProgressView-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -460,6 +465,7 @@
 				E94EE54418021C9C003A77E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E94EE54518021C9C003A77E7 /* Build configuration list for PBXNativeTarget "CJHCircularProgressViewTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +474,7 @@
 				E94EE54718021C9C003A77E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -13,4 +13,13 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+
+#if defined(__DEBUG__)
+#define DbgLog(s, ...) NSLog(@"%-35s | %s", [[NSString stringWithFormat : (s), ##__VA_ARGS__] UTF8String], [[[NSString stringWithUTF8String : __FUNCTION__] lastPathComponent] UTF8String])
+//#elif defined(__ADHOC__)
+//#define DbgLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#else
+#define DbgLog(s, ...)
+#endif
+
 #endif
