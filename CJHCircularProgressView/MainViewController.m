@@ -113,31 +113,29 @@ static const CGFloat progressContainerHeight = 75.0f;
 
 - (void) testUpdate1
 {
+    self.progressView.insetImage = [UIImage imageNamed: @"test"];
     [self.progressView setProgress: 0.05];
 }
 
 - (void) testUpdate2
 {
     [self.progressView setProgress: 0.15];
-    
     self.progressView.lineColor = [UIColor lightGrayColor];
 }
 
 - (void) testUpdate3
 {
-    self.progressView.insetImage = [UIImage imageNamed: @"test"];
-    [self.progressView setProgress: 0.30];
+    [self.progressView setProgress: 0.33];
 }
 
 - (void) testUpdate4
 {
-    [self.progressView setProgress: 0.50];
-    self.progressView.radius = self.progressView.radius - 7.5;
+    self.progressView.insetImage = [UIImage imageNamed: @"test2"];
+    [self.progressView setProgress: 0.60];
 }
 
 - (void) testUpdate5
 {
-    self.progressView.insetImage = [UIImage imageNamed: @"test2"];
     [self.progressView setProgress: 0.95];
 }
 
