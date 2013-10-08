@@ -132,6 +132,7 @@ static const CGFloat progressContainerHeight = 75.0f;
 {
     self.progressView.insetImage = [UIImage imageNamed: @"test2"];
     [self.progressView setProgress: 0.60];
+    self.progressView.lineColor = [UIColor cyanColor];
 }
 
 - (void) testUpdate5
