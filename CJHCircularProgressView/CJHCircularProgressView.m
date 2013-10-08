@@ -16,8 +16,9 @@
 @property (nonatomic, assign) CGFloat prevProgress;
 
 @property (nonatomic, assign) CAShapeLayer* circleLayer;
-@property (nonatomic, assign) CAShapeLayer* imageMaskLayer;
-@property (nonatomic, strong) UIImageView* insetImageView;
+@property (nonatomic, assign) CALayer* imageLayer;
+@property (nonatomic, assign) CALayer* maskLayer;
+@property (nonatomic, strong) UIImage* imageStore;
 
 @end
 
@@ -39,15 +40,13 @@
         
         self.backgroundColor = [UIColor clearColor];
         
-        self.insetImageView = [[UIImageView alloc] initWithFrame: CGRectMake((self.bounds.size.width / 2) - self.radius,
-                                                                             (self.bounds.size.height / 2) - self.radius,
-                                                                             self.radius * 2,
-                                                                             self.radius * 2)];
-        self.insetImageView.clipsToBounds = YES;
+        self.imageLayer = [CALayer layer];
+        self.imageLayer.frame = [self imageLayerFrame];
+        [self.layer addSublayer: self.imageLayer];
         
-        self.insetImageView.contentMode = UIViewContentModeScaleAspectFill; //! TODO: Investigate what happens for a landscape photo
-        
-        [self addSubview: self.insetImageView];
+        self.maskLayer = [CALayer layer];
+        self.maskLayer.frame = self.imageLayer.frame;
+        self.imageLayer.mask = self.maskLayer;
     }
     
     return self;
@@ -78,19 +77,11 @@
 {
     _radius = radius;
     
-    self.insetImageView.frame = CGRectMake((self.bounds.size.width / 2) - self.radius,
-                                           (self.bounds.size.height / 2) - self.radius,
-                                           self.radius * 2,
-                                           self.radius * 2);
-    
-    [self.imageMaskLayer removeFromSuperlayer];
-    self.imageMaskLayer = nil;
-    [self createInsetImageMask];
-    
     [self.circleLayer removeFromSuperlayer];
-    self.circleLayer = nil;
-    
     [self updateProgress];
+    
+    self.insetImage = self.imageStore;
+    [self setNeedsDisplay];
 }
 
 - (void) setAngleOffset: (CGFloat)angleOffset
@@ -116,17 +107,13 @@
 
 - (void) setInsetImage: (UIImage *)insetImage
 {
-    self.insetImageView.image = insetImage;
+    CGImageRef image = [insetImage CGImage];
     
-    [self.insetImageView setNeedsDisplay];
+    CGImageRef clippedImage = CGImageCreateWithImageInRect(image, self.imageLayer.bounds);
     
-    if (!self.imageMaskLayer) {
-        [self createInsetImageMask];
-    }
-}
-
-- (UIImage *) insetImage {
-    return self.insetImageView.image;
+    _imageStore = insetImage;
+    
+    self.imageLayer.contents = (__bridge id)clippedImage;
 }
 
 #pragma mark -
@@ -134,12 +121,6 @@
 
 - (void) updateProgress
 {
-    if (!self.circleLayer) {
-        self.circleLayer = [self createCircleLayer];
-        
-        [self.layer addSublayer: self.circleLayer];
-    }
-    
     [CATransaction begin];
     
     [CATransaction setAnimationDuration: 0.25f];
@@ -151,49 +132,54 @@
     [CATransaction commit];
 }
 
-- (void) createInsetImageMask
+- (void) layoutSubviews
 {
-    CAShapeLayer *circleShapeMask = [CAShapeLayer layer];
+    [super layoutSubviews];
     
-    circleShapeMask.actions = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNull null], @"path", nil];
-    circleShapeMask.fillColor = [[UIColor blackColor] CGColor];
-    circleShapeMask.fillRule = kCAFillRuleEvenOdd;
-    circleShapeMask.frame = self.insetImageView.bounds;
+    [self createCircleLayer];
     
-    [self.insetImageView.layer addSublayer: circleShapeMask];
+    UIGraphicsBeginImageContextWithOptions(self.imageLayer.bounds.size, NO, [[UIScreen mainScreen] scale]);
     
-    CGMutablePathRef circleRegionPath = CGPathCreateMutable();
-    CGPathAddRect(circleRegionPath, NULL, self.insetImageView.bounds);
-    CGPathAddEllipseInRect(circleRegionPath, NULL, CGRectMake(self.insetImageView.bounds.origin.x,
-                                                              self.insetImageView.bounds.origin.y,
-                                                              self.insetImageView.frame.size.width,
-                                                              self.insetImageView.frame.size.height));
+    [[self circlePath] fill];
+    [self.maskLayer setContents: (id)[UIGraphicsGetImageFromCurrentImageContext() CGImage]];
     
-    circleShapeMask.path = circleRegionPath;
-    
-    CGPathRelease(circleRegionPath);
-    
-    self.imageMaskLayer = circleShapeMask;
+    UIGraphicsEndImageContext();
+}
+
+- (UIBezierPath*) circlePath
+{
+    return [UIBezierPath bezierPathWithArcCenter: CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2)
+                                    radius: self.radius - (self.lineWidth / 2)
+                                startAngle: self.angleOffset
+                                  endAngle: (2 * M_PI) + self.angleOffset
+                                 clockwise: YES];
+}
+
+- (CGRect) imageLayerFrame
+{
+    return CGRectMake((self.bounds.size.width / 2) - self.radius,
+                      (self.bounds.size.height / 2) - self.radius,
+                      self.radius * 2,
+                      self.radius * 2);
 }
 
 #pragma mark -
 #pragma mark Layer Interactions
 
-- (CAShapeLayer*) createCircleLayer
+- (void) createCircleLayer
 {
     CAShapeLayer *circle = [CAShapeLayer layer];
     
-    circle.path = [[UIBezierPath bezierPathWithArcCenter: CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2)
-                                                  radius: self.radius - (self.lineWidth / 2)
-                                              startAngle: self.angleOffset
-                                                endAngle: (2 * M_PI) + self.angleOffset
-                                               clockwise: YES] CGPath];
+    circle.path = [[self circlePath] CGPath];
     
     circle.fillColor = [[UIColor clearColor] CGColor];
     circle.strokeColor = [self.lineColor CGColor];
     circle.lineWidth = self.lineWidth;
+    circle.strokeEnd = 0.0f;
     
-    return circle;
+    self.circleLayer = circle;
+    
+    [self.layer addSublayer: self.circleLayer];
 }
 
 @end

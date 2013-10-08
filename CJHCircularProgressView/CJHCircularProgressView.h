@@ -17,7 +17,6 @@
 @property (nonatomic, assign) CGFloat angleOffset;
 @property (nonatomic, assign) CGFloat lineWidth;
 @property (nonatomic, strong) UIColor* lineColor;
-
 @property (nonatomic, assign) UIImage* insetImage;
 
 @property (nonatomic, strong) id <CJHCircularProgressViewDelegate> delegate;
